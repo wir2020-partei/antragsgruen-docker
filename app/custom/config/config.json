@@ -1,0 +1,61 @@
+{
+    "dbConnection": {
+        "dsn": "mysql:host=db;dbname=antragsgruen",
+        "emulatePrepare": true,
+        "username": "root",
+        "password": "my-secret-pw",
+        "charset": "utf8mb4"
+    },
+    "siteSubdomain": null,
+    "redis": null,
+    "prettyUrl": true,
+    "tablePrefix": "",
+    "resourceBase": "\/",
+    "baseLanguage": "de",
+    "randomSeed": "BXXNFo8T2IoJmhc8rp-uh36DYlE0Co-T",
+    "multisiteMode": true,
+    "domainPlain": "http:\/\/wir2020.local\/",
+    "domainSubdomain": "http:\/\/<subdomain:[\\w_-]+>.wir2020.local\/",
+    "cookieDomain": null,
+    "hasSaml": false,
+    "samlOrgaFile": null,
+    "prependWWWToSubdomain": false,
+    "confirmEmailAddresses": true,
+    "dataPrivacyCheckbox": false,
+    "mailFromName": "Base",
+    "mailFromEmail": "base@wir2020.local",
+    "adminUserIds": [
+        1
+    ],
+    "siteBehaviorClasses": [],
+    "authClientCollection": [],
+    "blockedSubdomains": [
+        "www"
+    ],
+    "autoLoginDuration": 31536000,
+    "xelatexPath": "\/usr\/bin\/xelatex",
+    "xdvipdfmx": "\/usr\/bin\/xdvipdfmx",
+    "lualatexPath": null,
+    "pdfunitePath": "\/usr\/bin\/pdfunite",
+    "pdfExportConcat": true,
+    "pdfExportIntegFrame": false,
+    "localMessages": [],
+    "imageMagickPath": null,
+    "sitePurgeAfterDays": null,
+    "binaryFilePath": null,
+    "mode": "production",
+    "updateKey": null,
+    "plugins": [
+        "antragsgruen_sites"
+    ],
+    "sitePlugins": [],
+    "mailService": {
+        "transport": "smtp",
+        "host": "smtp.wir2020.local",
+        "port": "25",
+        "authType": "plain_tls",
+        "encryption": "tls",
+        "username": "smtpuser",
+        "password": "smtppassword"
+    }
+}

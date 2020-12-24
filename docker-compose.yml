@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: antragsgruen
+    ports: 
+      - "3306:3306"  
+    volumes:
+      - ./db/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  app:
+    image: eu.gcr.io/wir2020-test/antragsgruen:4.6.3.0
+    build: app
+    environment:
+      ANTRAGSGRUEN_MYSQL_HOST: db
+      ANTRAGSGRUEN_MYSQL_DB: antragsgruen
+      ANTRAGSGRUEN_MYSQL_USER: root
+      ANTRAGSGRUEN_MYSQL_PASSWORD: my-secret-pw
+    ports:
+    - "80:80"
+
