@@ -37,7 +37,7 @@ class Module extends ModuleBase
         }
     }
 
-    public static function getForcedLayoutHooks(Layout $layoutSettings, ?Consultation $consultation)
+    public static function getForcedLayoutHooks(/*Layout*/ $layoutSettings, /*?Consultation*/ $consultation)
     {
         return [
             new LayoutHooks($layoutSettings, $consultation)
