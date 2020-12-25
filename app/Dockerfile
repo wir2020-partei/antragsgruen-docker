@@ -1,13 +1,20 @@
-FROM webdevops/php-apache:7.4
+FROM php:7.4-apache
 
-RUN wget https://github.com/CatoTH/antragsgruen/releases/download/v4.6.3/antragsgruen-4.6.3.tar.bz2 && \
-    tar -xjvf antragsgruen-4.6.3.tar.bz2 && \
-    rmdir /app && \
-    mv antragsgruen-4.6.3 /app && \
-    rm /app/config/INSTALLING && \
-    chown -R application:application /app/web/assets && \
-    chown -R application:application /app/runtime && \
-    rm antragsgruen-4.6.3.tar.bz2
+WORKDIR /
+RUN curl -L https://github.com/CatoTH/antragsgruen/releases/download/v4.6.3/antragsgruen-4.6.3.tar.bz2 -o ag.tar.bz2 && \
+    tar -xjf ag.tar.bz2 && \
+    rm -fr /var/www/html && \
+    mv antragsgruen-4.6.3 /var/www/html && \
+    chown -R www-data:www-data /var/www/html/web/assets && \
+    chown -R www-data:www-data /var/www/html/runtime && \
+    rm /var/www/html/config/INSTALLING && \
+    rm ag.tar.bz2
 
-COPY custom/ /app/
-COPY httpd/ /opt/docker/etc/httpd/
+RUN docker-php-ext-install -j$(nproc) mysqli pdo_mysql 
+# Enable common Apache modules
+RUN a2enmod headers expires rewrite
+
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+COPY custom/ /var/www/html/
+COPY httpd/vhost.conf /etc/apache2/sites-available/000-default.conf

@@ -29,10 +29,10 @@ if (YII_DEBUG === false) {
     $params->dbConnection['schemaCache']         = 'cache';
 }
 
-$host = $_ENV['ANTRAGSGRUEN_MYSQL_HOST'];
-$db =  $_ENV['ANTRAGSGRUEN_MYSQL_DB'];
-$user =  $_ENV['ANTRAGSGRUEN_MYSQL_USER'];
-$password = $_ENV['ANTRAGSGRUEN_MYSQL_PASSWORD'];
+$host = getenv('ANTRAGSGRUEN_MYSQL_HOST');
+$db =  getenv('ANTRAGSGRUEN_MYSQL_DB');
+$user =  getenv('ANTRAGSGRUEN_MYSQL_USER');
+$password = getenv('ANTRAGSGRUEN_MYSQL_PASSWORD');
 if (isset($host)) {
    $params->dbConnection['dsn'] = "mysql:host=$host;dbname=$db";
    $params->dbConnection['username'] = $user;
