@@ -39,6 +39,38 @@ if (isset($host)) {
    $params->dbConnection['password'] = $password;
 }
 
+$smtpHost = getenv('ANTRAGSGRUEN_SMTP_HOST');
+$smtpPort = getenv('ANTRAGSGRUEN_SMTP_PORT');
+$smtpAuthType = getenv('ANTRAGSGRUEN_SMTP_AUTH_TYPE');
+$smtpEncryption = getenv('ANTRAGSGRUEN_SMTP_ENCRYPTION');
+$smtpUser = getenv('ANTRAGSGRUEN_SMTP_USER');
+$smtpPassword = getenv('ANTRAGSGRUEN_SMTP_PASSWORD');
+
+if (isset($smtpHost)) {
+    $params->mailService['transport'] = 'smtp';
+    $params->mailService['host'] = $smtpHost;
+    $params->mailService['port'] = $smtpPort;
+    $params->mailService['authType'] = $smtpAuthType;
+    $params->mailService['encryption'] = $smtpEncryption;
+    $params->mailService['username'] = $smtpUser;
+    $params->mailService['password'] = $smtpPassword;
+}
+
+$domain = getenv('ANTRAGSGRUEN_DOMAIN');
+if (isset($domain)) {
+    $params->domainPlain = $domain;
+}
+
+$mailFromName = getenv('ANTRAGSGRUEN_MAIL_FROM_NAME');
+if (isset($mailFromName)) {
+    $params->mailFromName = $mailFromName;
+}
+
+$mailFromEmail = getenv('ANTRAGSGRUEN_MAIL_FROM_EMAIL');
+if (isset($mailFromEmail)) {
+    $params->mailFromEmail = $mailFromEmail;
+}
+
 $common = require(__DIR__ . DIRECTORY_SEPARATOR . 'common.php');
 
 $csrfCookie = [
