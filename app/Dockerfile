@@ -1,7 +1,9 @@
 FROM php:7.4-apache
 
-RUN apt update && \
-    apt-get install -y wget vim git zip unzip zlib1g-dev libzip-dev libpng-dev libicu-dev libcurl4-gnutls-dev && \
+RUN apt-get update && \
+    apt-get install -y wget nano git zip unzip zlib1g-dev libzip-dev libpng-dev libicu-dev libcurl4-gnutls-dev \
+        texlive-lang-german texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-humanities texlive-fonts-recommended \
+        texlive-xetex texlive-luatex && \
     docker-php-ext-install -j$(nproc) mysqli pdo_mysql intl gd curl zip pcntl exif opcache intl && \
     a2enmod headers expires rewrite && \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
