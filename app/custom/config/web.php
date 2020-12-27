@@ -56,11 +56,6 @@ if (isset($smtpHost)) {
     $params->mailService['password'] = $smtpPassword;
 }
 
-$domain = getenv('ANTRAGSGRUEN_DOMAIN');
-if (isset($domain)) {
-    $params->domainPlain = $domain;
-}
-
 $mailFromName = getenv('ANTRAGSGRUEN_MAIL_FROM_NAME');
 if (isset($mailFromName)) {
     $params->mailFromName = $mailFromName;
@@ -69,6 +64,26 @@ if (isset($mailFromName)) {
 $mailFromEmail = getenv('ANTRAGSGRUEN_MAIL_FROM_EMAIL');
 if (isset($mailFromEmail)) {
     $params->mailFromEmail = $mailFromEmail;
+}
+
+$multisiteMode = getenv('ANTRAGSGRUEN_MULTISITE_MODE');
+if (isset($multisiteMode)) {
+    $params->multisiteMode = $multisiteMode;
+}
+
+$siteSubdomain = getenv('ANTRAGSGRUEN_SITE_SUBDOMAIN');
+if (isset($siteSubdomain)) {
+    $params->siteSubdomain = $siteSubdomain;
+}
+
+$domain = getenv('ANTRAGSGRUEN_DOMAIN');
+if (isset($domain)) {
+    $params->domainPlain = $domain;
+}
+
+$domainSubdomain = getenv('ANTRAGSGRUEN_DOMAIN_SUBDOMAIN');
+if (isset($domainSubdomain)) {
+    $params->domainSubdomain = $domainSubdomain;
 }
 
 $common = require(__DIR__ . DIRECTORY_SEPARATOR . 'common.php');
