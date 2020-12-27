@@ -30,9 +30,9 @@ services:
       ANTRAGSGRUEN_SMTP_AUTH_TYPE: plain_tls
       ANTRAGSGRUEN_SMTP_ENCRYPTION: tls
       ANTRAGSGRUEN_SMTP_USER: harald.wellmann@gmx.de
-      ANTRAGSGRUEN_SMTP_PASSWORD: "******"
+      ANTRAGSGRUEN_SMTP_PASSWORD: "${SMTP_PASSWORD}"
       ANTRAGSGRUEN_MAIL_FROM_NAME: "Antragsgrün Administrator"
-      ANTRAGSGRUEN_MAIL_FROM_EMAIL: "******@gmx.de"
+      ANTRAGSGRUEN_MAIL_FROM_EMAIL: "harald.wellmann@gmx.de"
       
     ports:
     - "80:80"
